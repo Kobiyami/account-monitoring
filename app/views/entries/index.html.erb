@@ -1,0 +1,47 @@
+<h1>Revenus et dépenses pour <%= Date.today.strftime('%B %Y') %></h1>
+
+<h2>Revenus</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Montant</th>
+      <th>Catégorie</th>
+      <th>Sous-catégorie</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @entries.select { |e| e.entry_type == 'income' }.each do |entry| %>
+      <tr>
+        <td><%= number_to_currency(entry.amount) %></td>
+        <td><%= entry.subcategory.category.name %></td>
+        <td><%= entry.subcategory.name %></td>
+        <td><%= entry.date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Dépenses</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Montant</th>
+      <th>Catégorie</th>
+      <th>Sous-catégorie</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @entries.select { |e| e.entry_type == 'expense' }.each do |entry| %>
+      <tr>
+        <td><%= number_to_currency(entry.amount) %></td>
+        <td><%= entry.subcategory.category.name %></td>
+        <td><%= entry.subcategory.name %></td>
+        <td><%= entry.date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Ajouter une entrée', new_entry_path %>

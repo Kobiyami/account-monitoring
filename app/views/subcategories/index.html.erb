@@ -1,0 +1,23 @@
+<h1>Sous-catégories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @subcategories.each do |subcategory| %>
+      <tr>
+        <td><%= subcategory.name %></td>
+        <td>
+          <%= link_to 'Modifier', edit_subcategory_path(subcategory) %>
+          <%= link_to 'Supprimer', subcategory_path(subcategory), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Ajouter une sous-catégorie', new_subcategory_path %>

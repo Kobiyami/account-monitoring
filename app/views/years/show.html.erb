@@ -1,0 +1,7 @@
+<h1>Année : <%= @year.year %></h1>
+<p>Archivée : <%= @year.archived ? 'Oui' : 'Non' %></p>
+
+<h2>Catégories</h2>
+<%= render 'categories/index', categories: @year.categories %>
+
+<%= link_to 'Retour à la liste des années', years_path %>

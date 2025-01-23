@@ -1,0 +1,25 @@
+<%= form_with(model: @entry, local: true) do |form| %>
+  <div>
+    <%= form.label :amount, 'Montant' %>
+    <%= form.number_field :amount, step: 0.01 %>
+  </div>
+
+  <div>
+    <%= form.label :entry_type, 'Type d\'entrée' %>
+    <%= form.select :entry_type, [['Revenu', 'income'], ['Dépense', 'expense']] %>
+  </div>
+
+  <div>
+    <%= form.label :subcategory_id, 'Sous-catégorie' %>
+    <%= form.collection_select :subcategory_id, @subcategories, :id, :name %>
+  </div>
+
+  <div>
+    <%= form.label :date, 'Date' %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

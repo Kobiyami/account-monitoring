@@ -1,0 +1,15 @@
+<%= form_with(model: @category, local: true) do |form| %>
+  <div>
+    <%= form.label :name, 'Nom de la catégorie' %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :category_type, 'Type de catégorie' %>
+    <%= form.select :category_type, [['Revenu', 'income'], ['Dépense', 'expense']] %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

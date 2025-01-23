@@ -1,0 +1,25 @@
+<h1>Années disponibles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Année</th>
+      <th>Archivée</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @years.each do |year| %>
+      <tr>
+        <td><%= link_to year.year, year_path(year) %></td>
+        <td><%= year.archived ? 'Oui' : 'Non' %></td>
+        <td>
+          <%= link_to 'Modifier', edit_year_path(year) %>
+          <%= link_to 'Supprimer', year_path(year), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Ajouter une année', new_year_path %>
