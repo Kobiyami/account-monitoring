@@ -1,0 +1,15 @@
+<%= form_with(model: @year, local: true) do |form| %>
+  <div>
+    <%= form.label :year, 'Année' %>
+    <%= form.number_field :year %>
+  </div>
+
+  <div>
+    <%= form.label :archived, 'Archivée ?' %>
+    <%= form.check_box :archived %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
